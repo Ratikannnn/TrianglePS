@@ -1,2 +1,41 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+using System;
+
+namespace PascalTriangle
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            while (true) // This loop will continue until we break out of it
+            {
+                Console.Write("Enter the total rows for Pascal's Triangle : ");
+                int totalRows = int.Parse(Console.ReadLine());
+
+                // If the user entered a negative number, re-prompt for input
+                while (totalRows < 0)
+                {
+                    Console.WriteLine("Invalid Pascal’s triangle row number..");
+                    Console.Write("Enter the total rows for Pascal's Triangle: ");
+                    totalRows = int.Parse(Console.ReadLine());
+                }
+
+                // For each row...
+                for (int currentRow = 0; currentRow < totalRows; currentRow++)
+                {
+                    int number = 1; // Start the row with a 1
+
+                    // For each column...
+                    for (int currentColumn = 0; currentColumn <= currentRow; currentColumn++)
+                    {
+                        Console.Write(number + " ");
+                        number = number * (currentRow - currentColumn) / (currentColumn + 1);
+                    }
+                    
+                    // After each row, print a newline character to move to the next line
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+}
+
